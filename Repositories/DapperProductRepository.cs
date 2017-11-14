@@ -16,7 +16,7 @@ namespace ASPNETKata.Shared
 
         public IEnumerable<Product> GetProducts()
         {
-            return _connection.Query<Product>("SELECT * form product ORDER BY ProductID DESC");
+            return _connection.Query<Product>("SELECT * from product ORDER BY ProductID DESC");
         }
 
         public void DeleteProduct(int productId)
@@ -32,7 +32,7 @@ namespace ASPNETKata.Shared
 
         public void InsertProduct(Product prod)
         {
-            _connection.Execute("INSERT into product (Name) values (name)", new {name = prod.Name});
+            _connection.Execute("INSERT into product (Name) values (@name)", new {name = prod.Name});
         }
 
         public Product GetDetails(int productId)
